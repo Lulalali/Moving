@@ -1,0 +1,65 @@
+<DOCTYPE html>
+    <html>
+    <head>
+    <title>Meme Mover</title>
+    <style>
+    body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #52e4d3;
+    padding: 20px;
+    }
+    #memeImage {
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+    }
+    </style>
+    </head>
+    <body>
+    <h1>Meme Mover</h1>
+    <img id="memeImage" src="Mickey_Mouse.png" width="200" height="200">
+    <br>
+    <button id="startButton" onclick="startMoving()">Start</button>
+    <button id="stopButton" onclick="stopMoving()">Stop</button>
+    
+    <script>
+    // JavaScript function to move the meme image
+    function moveMeme() {
+    const memeImage = document.getElementById('memeImage');
+    const maxX = window.innerWidth - memeImage.clientWidth;
+    const maxY = window.innerHeight - memeImage.clientHeight;
+    
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+    
+    memeImage.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+    
+    // JavaScript function to enable start button and move the meme image
+    function startMoving() {
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    
+    startButton.disabled = true;
+    stopButton.disabled = false;
+    
+    // Move the meme image every second
+    window.memeInterval = setInterval(moveMeme, 1000);
+    }
+    
+    // JavaScript function to enable stop button and stop moving the meme image
+    function stopMoving() {
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    
+    startButton.disabled = false;
+    stopButton.disabled = true;
+    
+    // Stop moving the meme image
+    clearInterval(window.memeInterval);
+    }
+    </script>
+    </body>
+    </html>
+    
+    

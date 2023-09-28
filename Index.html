@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muving Meme</title>
+    <style>
+        body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #52e4d3;
+        padding: 20px;
+        }
+
+        #memeImage{
+            position: absolute;
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Moving Image</h1>
+    <img src="Car2.jpeg"id="memeImage" width="200" height="200">
+    <br>
+<br>
+<br>
+<br>
+
+    <Button id="startButton" onclick="move()">Start</Button>
+    <Button id="stopButton" onclick="stop()">Stopt</Button>
+    <Script>
+        function moveImage(){
+            const memeImage = document.getElementById("memeImage");
+            const maxX = window.innerWidth - memeImage.clientWidth;
+            const maxY = window.innerHeight - memeImage.clientHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            memeImage.style.transform=' translate(${randomX}px, ${randomY}px)';
+
+
+
+        }
+        function move(){
+            window.memeInterval=setInterval(moveImage,1000);
+        }
+        function stop(){
+            clearInterval(window.memeInterval)
+        }
+    </Script>
+    
+</body>
+</html>
